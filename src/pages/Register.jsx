@@ -6,7 +6,7 @@ import { Input2 } from "../components/Input2/Input2"
 import { Button1 } from "../components/Button1/Button1"
 
 //Images
-import logo1 from "../assets/img/logo/logo_1.png"
+// import logo1 from "../assets/img/logo/logo_1.png"
 
 //Icons
 import iconBack from "../assets/img/icons/filled/back_filled.png"
@@ -31,9 +31,9 @@ export const Register = () => {
 
                 <section className="flex flex-col justify-center items-center mb-12">
                     <h1 className={`text-center ${Size.EXTRALARGE} font-[sansation-regular]`}>Crear cuenta</h1>
-                    <div className="w-[75%]">
+                    {/* <div className="w-[75%]">
                         <img src={logo1} alt="Logo" />
-                    </div>
+                    </div> */}
                 </section>
 
                 <section className="flex w-full overflow-auto scrollbar-none">

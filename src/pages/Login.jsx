@@ -8,14 +8,14 @@ import { IconButton } from "../components/IconButton/IconButton"
 import { CheckBox } from "../components/CheckBox/CheckBox"
 
 //Images
-import logo1 from "../assets/img/logo/logo_1.png"
+// import logo1 from "../assets/img/logo/logo_1.png"
 
 //Icons
 import iconBack from "../assets/img/icons/filled/back_filled.png"
 import iconUser from "../assets/img/icons/filled/user_filled.png"
 import iconPassword from "../assets/img/icons/filled/password_filled.png"
 const iconTemplate = "bg-[url(assets/img/backgrounds/login/background_login_right.png)]"
-const logo3 = "bg-[url(./assets/img/logo/logo_3.png)]"
+// const logo3 = "bg-[url(./assets/img/logo/logo_3.png)]"
 
 export const Login = () => {
     return(
@@ -40,7 +40,7 @@ export const Login = () => {
 
                                     <div className="flex flex-col items-center justify-center">
                                         <h2 className={`${Size.EXTRALARGE}`}>Bienvenido a</h2>
-                                        <img src={logo1} alt="Logo" className="h-[50px] md:h-[60px] lg:h-[4rem] xl:h-[5.5rem] max-w-full"/>
+                                        {/* <img src={logo1} alt="Logo" className="h-[50px] md:h-[60px] lg:h-[4rem] xl:h-[5.5rem] max-w-full"/> */} 
                                         <p className={`hidden md:flex w-5/6 ${Size.LARGE} mt-5 leading-7`}>Inicia sesión y empieza a explorar un mundo de realidades mágicas</p>
                                     </div>
 
@@ -67,8 +67,8 @@ export const Login = () => {
 
                         <div className={`hidden lg:flex flex-col lg:w-1/2 ${iconTemplate} bg-cover bg-center rounded-r-xl xl:py-[30px] xl:px-[20px] text-white items-center justify-center`}>
                             <div className="w-full h-full flex flex-col items-center justify-end space-y-3 p-10 my-[5rem] xl:my-[150px]">
-                                <div className={`${logo3} w-full h-[10vw] mb-[10px] max-h-[150px] bg-contain bg-no-repeat bg-center`}></div>
-                                <p className={`${Size.EXTRALARGE} leading-[30px]`}>¡Descubre, comparte y conecta con la vibrante comunidad literaria que hemos creado para ti!</p>
+                                {/* <div className={`${logo3} w-full h-[10vw] mb-[10px] max-h-[150px] bg-contain bg-no-repeat bg-center`}></div> */}
+                                <p className={`${Size.EXTRALARGE} leading-[30px]`}>Maneja confiadamente tus documentos</p>
                             </div>
                         </div>
                     </div>
