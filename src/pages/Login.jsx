@@ -14,6 +14,12 @@ import iconBack from "../assets/img/icons/filled/back_filled.png";
 import iconUser from "../assets/img/icons/filled/user_filled.png";
 import iconPassword from "../assets/img/icons/filled/password_filled.png";
 
+//validation for forms
+import { Formik } from "formik";
+import * as Yup from 'yup';
+import { InputFormik } from "../components/Input/InputFormik";
+
+
 const iconTemplate = "bg-[url(assets/img/backgrounds/login/background_login_right.png)]";
 
 export const Login = () => {
@@ -42,31 +48,56 @@ export const Login = () => {
                         </section>
 
                         <section className="flex items-center justify-center w-full h-full">
-                            <FormProvider {...methods}>
-                                <form onSubmit={methods.handleSubmit(onSubmit)} className="flex flex-col relative items-center justify-center w-full space-y-8 lg:space-y-16">
-                                    <div className="flex flex-col items-center justify-center">
-                                        <h2 className={`${Size.EXTRALARGE}`}>Bienvenido a</h2>
-                                        <p className={`hidden md:flex w-5/6 ${Size.LARGE} mt-5 leading-7`}>Inicia sesión y empieza a explorar un mundo de realidades mágicas</p>
-                                    </div>
+                            <Formik
+                                initialValues={{ email: '', password: '' }}
+                                validationSchema={Yup.object({
+                                    email: Yup.string().email('Invalid email address').required('Required'),
+                                    password: Yup.string().required('Required'),
+                                })}
+                                onSubmit={(values, { setSubmitting }) => {
+                                    setTimeout(() => {
+                                        alert(JSON.stringify(values, null, 2));
+                                        setSubmitting(false);
+                                    }, 400);
+                                }}
+                            >
+                                {formik => (
+                                    <form className="flex flex-col relative items-center justify-center w-full space-y-8 lg:space-y-16" onSubmit={formik.handleSubmit}>
+                                        <div className="flex flex-col items-center justify-center">
+                                            <h2 className={`${Size.EXTRALARGE}`}>Bienvenido a</h2>
+                                            <p className={`hidden md:flex w-5/6 ${Size.LARGE} mt-5 leading-7`}>Inicia sesión y empieza a explorar un mundo de realidades mágicas</p>
+                                        </div>
 
-                                    <section className="flex flex-col items-center justify-center w-full xl:px-[1.5vh] space-y-3">
-                                        <Input type='email' id='txtUserL' placeholder='Usuario' img={iconUser} required={true} />
-                                        <Input type='password' id='txtPasswordL' placeholder='Contraseña' img={iconPassword} required={true} />
-
-                                        <section className="w-[90%] md:w-[70%] mt-[5px] xl:mt-[10px] flex items-center justify-between">
-                                            <CheckBox />
-                                            <div className="items-end text-right">
-                                                <p className={`flex flex-col ${Size.MEDIUM} hover:text-[#0094FF] mr-3 text-right`}><a>¿Olvidaste contraseña?</a></p>
-                                            </div>
+                                        <section className="flex flex-col items-center justify-center w-full xl:px-[1.5vh] space-y-3">
+                                            <InputFormik
+                                                type='email'
+                                                name='email' // Cambiar `id` a `name`
+                                                placeholder='Usuario'
+                                                img={iconUser}
+                                                required={true}
+                                            />
+                                            <InputFormik
+                                                type='password'
+                                                name='password' // Cambiar `id` a `name`
+                                                placeholder='Contraseña'
+                                                img={iconPassword}
+                                                required={true}
+                                            />
+                                            <section className="w-[90%] md:w-[70%] mt-[5px] xl:mt-[10px] flex items-center justify-between">
+                                                <CheckBox />
+                                                <div className="items-end text-right">
+                                                    <p className={`flex flex-col ${Size.MEDIUM} hover:text-[#0094FF] mr-3 text-right`}><a>¿Olvidaste contraseña?</a></p>
+                                                </div>
+                                            </section>
                                         </section>
-                                    </section>
 
-                                    <section className="flex flex-col-reverse items-center justify-center md:flex-row md:justify-between w-[90%] md:w-[72%] mt-10 xl:mt-20 space-y-reverse space-y-3 md:space-y-0 md:space-x-5">
-                                        <Button1 nombre='Crear cuenta' id='crearcuenta' type='link' link='/Register' color={CButton.MATE} />
-                                        <Button1 nombre='Iniciar sesión' id='iniciarsesion' type='submit' link='' color={CButton.GRADIENT} />
-                                    </section>
-                                </form>
-                            </FormProvider>
+                                        <section className="flex flex-col-reverse items-center justify-center md:flex-row md:justify-between w-[90%] md:w-[72%] mt-10 xl:mt-20 space-y-reverse space-y-3 md:space-y-0 md:space-x-5">
+                                            <Button1 nombre='Crear cuenta' id='crearcuenta' type='link' link='/Register' color={CButton.MATE} />
+                                            <Button1 nombre='Iniciar sesión' id='iniciarsesion' type='submit' link='' color={CButton.GRADIENT} />
+                                        </section>
+                                    </form>
+                                )}
+                            </Formik>
                         </section>
                     </div>
 

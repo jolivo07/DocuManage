@@ -1,0 +1,29 @@
+import { Size } from "../../styles/LoginAndRegister/styles";
+import { useField } from "formik";
+
+export function InputFormik({ type, name, placeholder, img, required }) {
+    const [field, meta] = useField({ name, type });
+
+    return (
+        <div className="flex flex-col items-center w-[90%] md:w-[70%] xl:w-[75%]">
+            <div className="relative w-full">
+                <div className="absolute inset-y-0 left-0 flex items-center pl-[20px] xl:pl-[1.5rem] pointer-events-none">
+                    <img src={img} alt="icon" className="relative h-[1.5rem] w-[1.5rem] md:h-[20px] md:w-[20px] xl:w-[1.6rem] xl:h-[1.6rem]" />
+                </div>
+                <input
+                    type={type}
+                    required={required}
+                    id={name} // Cambiar a `name` para coincidir con el campo de Formik
+                    className={`h-[40px] md:h-[3.2rem] lg:h-[3.8rem] bg-[#FAFAFF] border border-gray-300 text-gray-900 ${Size.LARGE} rounded-full block w-full pl-[4rem] md:pl-[50px] xl:pl-[4rem] px-5 ${
+                        meta.touched && meta.error ? 'border-red-500' : ''
+                    }`}
+                    placeholder={placeholder}
+                    {...field} // Propiedades de campo de Formik
+                />
+            </div>
+            {meta.touched && meta.error ? (
+                    <div className="text-red-500 text-sm">{meta.error}</div>
+                ) : null}
+        </div>
+    );
+}
